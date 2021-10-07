@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Calc</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <link href='http://fonts.googleapis.com/css?family=Montserrat:400,300,700' rel='stylesheet' type='text/css'>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap" rel="stylesheet">
+        <style>
+            button{
+                padding: 8px;
+                width: 50px;
+                margin: 2px;
+                border-radius: 10%;
+                background-color: rgb(121, 121, 119);
+                color: cyan;
+                transition: all 0.5s;
+            }
+
+            .center{
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            body{
+                background-image: url('bricks.jpg'); 
+            }
+
+        </style>
+
+        <script>
+
+            function ipnumber(x){
+
+                if(x=='acc'){
+                    document.getElementById("inputBox").value="";
+                }
+               else{
+                document.getElementById("inputBox").value = document.getElementById("inputBox").value + x;
+               }
+            }
+
+            function calcu(){
+                let x=document.getElementById("inputBox").value;
+                var total;
+                var num1;
+                var num2;
+                var symbol;
+                var arr1 = x.replace(/[0-9]|[.]+/g,"");
+                var arr3 = arr1.split("").filter(function(arr3){return arr3});
+                var arr2 = x.split(/[+]|[-]|[/]|[*]|[(]|[)]|[%]/g);
+                if(arr3.length + arr2.length == 3){
+                    num1 = arr2[0];
+                    num2 = arr2[1];
+                    symbol = arr3[0];
+                    
+                    switch(symbol){
+                        case '+':
+                            total=parseFloat(num1)+parseFloat(num2);
+                            document.getElementById("inputBox").value = total;
+                            break;
+                        
+                        case '-':
+                            total=parseFloat(num1)-parseFloat(num2);
+                            document.getElementById("inputBox").value = total;
+                            break;
+                        
+                        case '/':
+                            total=parseFloat(num1)/parseFloat(num2);
+                            document.getElementById("inputBox").value = total;
+                            break;
+                        
+                        case '*':
+                            total=parseFloat(num1)*parseFloat(num2);
+                            document.getElementById("inputBox").value = total;
+                            break;
+                        
+                    }
+                        
+
+                 }
+
+                else{
+                        window.alert("Enter Two numbers and one operator");
+                        document.getElementById("inputBox").value = "";
+                    }
+          }
+        </script>
+    </head>
+
+    <body>
+        <h2 style="text-align: center; margin: 50px; color: rgb(204, 198, 198);">SIMPLE CALCULATOR</h2>
+        <div class="container" style="align-items: center;">
+           
+            <div style="background-color: rgb(204, 198, 198); width: fit-content; padding: 6px; margin-left: auto;
+            margin-right: auto; border-style: ridge; border-color: rgb(153, 150, 147);">
+                <div style="text-align: center; margin-bottom: 2px;">
+                <input id="inputBox" type="text" style="text-align: right;width: 220px ;
+                padding: 2px; margin-top: 4px; margin-bottom: 4px; background-color: rgb(170, 170, 169);
+                color: rgb(24, 80, 80);">
+                </div>
+                <table class="center">
+                    <tr>
+                        
+                        <th colspan="4" align="center">
+                            <button style="width: 220px; border-radius: 2%;" id="ac" onclick="ipnumber('acc')">AC</button>
+                        </th>
+                    </tr>
+                    
+                    <tr>
+                        <th>
+                            <button id="num9" onclick="ipnumber('9')">9</button>
+                        </th>
+                        <th>
+                            <button id="num8" onclick="ipnumber('8')">8</button>
+                        </th>
+                        <th>
+                            <button id="num7" onclick="ipnumber('7')">7</button>
+                        </th>
+                        <th>
+                            <button id="divide" onclick="ipnumber('/')">/</button>
+                        </th>
+                    </tr>
+
+                    <tr>
+                        <th>
+                            <button id="num6" onclick="ipnumber('6')">6</button>
+                        </th>
+                        <th>
+                            <button id="num5" onclick="ipnumber('5')">5</button>
+                        </th>
+                        <th>
+                            <button id="num4" onclick="ipnumber('4')">4</button>
+                        </th>
+                        <th>
+                            <button id="multiply" onclick="ipnumber('*')">*</button>
+                        </th>
+                    </tr>
+
+                    <tr>
+                        <th>
+                            <button id="num3" onclick="ipnumber('3')">3</button>
+                        </th>
+                        <th>
+                            <button id="num2" onclick="ipnumber('2')">2</button>
+                        </th>
+                        <th>
+                            <button id="num1" onclick="ipnumber('1')">1</button>
+                        </th>
+                        <th>
+                            <button id="subtract" onclick="ipnumber('-')">-</button>
+                        </th>
+                    </tr>
+
+                    <tr>
+                        <th>
+                            <button id="num0" onclick="ipnumber('0')">0</button>
+                        </th>
+                        <th>
+                            <button id="dot" onclick="ipnumber('.')">.</button>
+                        </th>
+                        <th>
+                            <button id="equlas" onclick="calcu()">=</button>
+                        </th>
+                        <th>
+                            <button id="plus" onclick="ipnumber('+')">+</button>
+                        </th>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+    </body>
+</html>
